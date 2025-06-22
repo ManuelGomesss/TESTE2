@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}Registo{% endblock %}
+{% block body %}
+  <h2>Crie a sua Conta</h2>
+  {% with msgs = get_flashed_messages() %}
+    {% if msgs %}
+      {% for m in msgs %}
+        <p style="color:red">{{ m }}</p>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+
+  <form method="post">
+    <label>Nome completo:<br>
+      <input name="name" type="text" required>
+    </label><br><br>
+
+    <label>Nº de aluno:<br>
+      <input name="student_number" type="text" pattern="2019\d{3}" title="Começa por 2019 + 3 dígitos" required>
+    </label><br><br>
+
+    <label>Password:<br>
+      <input name="password" type="password" required>
+    </label><br><br>
+
+    <p><strong>Termos e Condições</strong><br>
+       Os seus dados (nome e nº de aluno) serão usados apenas para fins estatísticos
+       e para construir um ranking comparativo entre alunos. O nome e o nº só serão
+       tornados públicos se essa for a sua escolha no final. Os dados não serão
+       partilhados fora desta plataforma.
+    </p>
+
+    <label>
+      <input type="checkbox" name="accept" required>
+      Li e aceito estes Termos e Condições
+    </label><br><br>
+
+    <button type="submit">Registar</button>
+  </form>
+
+  <p>Já tem conta? <a href="{{ url_for('login') }}">Entrar</a></p>
+{% endblock %}

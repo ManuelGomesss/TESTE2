@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}Início{% endblock %}
+{% block body %}
+  <h1>Bem-vindos ao Ranking da Faculdade</h1>
+
+  {% if error %}
+    <p style="color:red">{{ error }}</p>
+  {% endif %}
+
+  <form method="post">
+    <label>Nome:<br>
+      <input name="name" type="text" required>
+    </label><br><br>
+
+    <label>Nº de aluno:<br>
+      <input
+        name="student_number"
+        type="text"
+        pattern="2019\d{3}"
+        title="Tem de começar por 2019 e ter 7 dígitos"
+        required>
+    </label><br><br>
+
+    <label>
+      <input name="accept" type="checkbox" required>
+      Li e aceito os Termos e Condições
+    </label><br><br>
+
+    <button type="submit">Próximo</button>
+  </form>
+
+  <h2>Termos e Condições</h2>
+  <p>
+    Os seus dados (nome e nº de aluno) serão usados apenas para fins estatísticos
+    e para construir um ranking comparativo. O seu nome ou número só será tornado
+    público se assim o escolher no final.
+  </p>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Estágio Profissionalizante{% endblock %}
+{% block body %}
+  <h2>Preencha as sub-UCs do Estágio Profissionalizante</h2>
+  {% if error %}<p style="color:red">{{ error }}</p>{% endif %}
+  <form method="post">
+    Preparação Para a Prática Clínica (3 ECTS):
+      <input name="preparacao" type="number" step="0.1" min="0" max="20" value="{{ defaults.preparacao }}"><br>
+    Opcional 4 (6º ano) (3 ECTS):
+      <input name="opcional4"  type="number" step="0.1" min="0" max="20" value="{{ defaults.opcional4 }}"><br>
+    Cirurgia Geral (8 ECTS):
+      <input name="C"           type="number" step="0.1" min="0" max="20" value="{{ defaults.C }}"><br>
+    Ginecologia e Obstetrícia (6 ECTS):
+      <input name="GO"          type="number" step="0.1" min="0" max="20" value="{{ defaults.GO }}"><br>
+    Medicina Interna (9 ECTS):
+      <input name="MI"          type="number" step="0.1" min="0" max="20" value="{{ defaults.MI }}"><br>
+    Medicina Geral e Familiar (6 ECTS):
+      <input name="MGF"         type="number" step="0.1" min="0" max="20" value="{{ defaults.MGF }}"><br>
+    Pediatria (7 ECTS):
+      <input name="PED"         type="number" step="0.1" min="0" max="20" value="{{ defaults.PED }}"><br>
+    Saúde Mental (6 ECTS):
+      <input name="SM"          type="number" step="0.1" min="0" max="20" value="{{ defaults.SM }}"><br>
+    Relatório Final (12 ECTS):
+      <input name="RF"          type="number" step="0.1" min="0" max="20" value="{{ defaults.RF }}"><br><br>
+    <button type="submit">Calcular CF e Continuar</button>
+  </form>
+  <button onclick="history.back(); return false;">Voltar</button>
+{% endblock %}

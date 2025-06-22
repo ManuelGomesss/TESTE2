@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Média 6º Ano{% endblock %}
+{% block body %}
+  <h2>Média Final de Curso (6º Ano)</h2>
+  <p><strong>Total de ECTS processados:</strong> {{ sum_ects }}</p>
+  <p><strong>Soma (Grade × ECTS):</strong> {{ num }}</p>
+  <hr>
+  <p><strong>Média Final:</strong> {{ Y }}</p>
+
+  <form method="post">
+    Mostrar no ranking:
+    <select name="public_choice">
+      <option value="name" selected>Nome</option>
+      <option value="number">Nº aluno</option>
+      <option value="none">Nenhum</option>
+    </select>
+    <button type="submit">Guardar e Ver Ranking</button>
+  </form>
+  <button onclick="history.back(); return false;">Voltar</button>
+{% endblock %}

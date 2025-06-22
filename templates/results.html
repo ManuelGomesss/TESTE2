@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Resultados{% endblock %}
+{% block body %}
+  <h2>Resultados</h2>
+
+  <p><strong>Média sem as notas dos estágios:</strong> {{ X|round(2) }}</p>
+  <p><strong>Nota da UC Estágio Profissionalizante:</strong> {{ CF|round(2) }}</p>
+  <p><strong>Nota Final de Curso:</strong> {{ Y|round(2) }}</p>
+
+  <form method="post">
+    Mostrar no ranking:
+    <select name="public_choice">
+      <option value="name" selected>Nome</option>
+      <option value="number">Nº aluno</option>
+      <option value="none">Nenhum</option>
+    </select>
+    <button type="submit">Guardar e Ver Ranking</button>
+  </form>
+
+  <button onclick="history.back(); return false;">Voltar</button>
+
+{% endblock %}

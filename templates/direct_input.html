@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Introduzir Média Final{% endblock %}
+{% block body %}
+  <h2>Introduzir Média Final</h2>
+
+  <form method="post">
+    <label>Média Final de Curso:<br>
+      <input name="Y" type="number" step="0.01" required>
+    </label><br><br>
+
+    <label>Mostrar no ranking:<br>
+      <select name="public_choice">
+        <option value="name">Nome</option>
+        <option value="number">Nº aluno</option>
+        <option value="none">Nenhum</option>
+      </select>
+    </label><br><br>
+
+    <button type="submit">Guardar e Ver Ranking</button>
+  </form>
+
+  <button onclick="history.back(); return false;">Voltar</button>
+
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Upload do Plano de Estudos{% endblock %}
+{% block body %}
+  {% if error %}<p style="color:red">{{ error }}</p>{% endif %}
+
+  <p>
+    Para exportar o seu plano de estudos:
+    <ol>
+      <li>Entre no NetPa da NMS-FCM;</li>
+      <li>Vá a <strong>Área de Consulta → Situação Curricular</strong>;</li>
+      <li>Escolha a tabela “Plano de estudo” e clique em “Exportar para Excel”.</li>
+      <li>Importe aqui esse ficheiro .xls ou .xlsx:</li>
+    </ol>
+  </p>
+
+  <form method="post" enctype="multipart/form-data">
+    <input type="file" name="file" accept=".xls,.xlsx" required><br><br>
+    <button type="submit">Enviar e Calcular X</button>
+  </form>
+
+  <button onclick="history.back(); return false;">Voltar</button>
+
+{% endblock %}

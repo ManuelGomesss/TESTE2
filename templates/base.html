@@ -1,0 +1,11 @@
+<!doctype html>
+<html lang="pt">
+  <head><meta charset="utf-8"><title>{% block title %}{% endblock %}</title></head>
+  <body>
+    <h1>Ranking Faculdade</h1>
+    {% with msg = get_flashed_messages() %}
+      {% if msg %}<p style="color:red">{{ msg[0] }}</p>{% endif %}
+    {% endwith %}
+    {% block body %}{% endblock %}
+  </body>
+</html>

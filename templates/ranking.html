@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}Ranking Faculdade{% endblock %}
+{% block body %}
+  <h1>Ranking Faculdade</h1>
+
+  <table border="1" cellpadding="5" cellspacing="0">
+    <thead>
+      <tr>
+        <th>Lugar</th>
+        <th>Utilizador</th>
+        <th>Nota Final de Curso</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for user in users %}
+        <tr>
+          <td>{{ loop.index }}</td>
+          <td>
+            {% if user.public_choice == 'name' %}
+              {{ user.name }}
+            {% elif user.public_choice == 'number' %}
+              {{ user.student_number }}
+            {% elif user.public_choice == 'none' %}
+              {{ (user.student_number|string)[:4] ~ '***' }}
+            {% else %}
+              {{ (user.student_number|string)[:4] ~ '***' }}
+            {% endif %}
+          </td>
+          <td>{{ user.average|round(2) }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  {% if course_mean is not none %}
+    <p><strong>Média do curso:</strong> {{ course_mean|round(2) }}</p>
+  {% endif %}
+{% endblock %}

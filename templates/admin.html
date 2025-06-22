@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}Administração{% endblock %}
+{% block body %}
+  <h1>Painel de Administração</h1>
+
+  <table border="1" cellpadding="5" cellspacing="0">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Nº Aluno</th>
+        <th>Média</th>
+        <th>Escolha Pública</th>
+        <th>Ação</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for u in users %}
+        <tr>
+          <td>{{ u.id }}</td>
+          <td>{{ u.name }}</td>
+          <td>{{ u.student_number }}</td>
+          <td>{{ u.average|round(2) }}</td>
+          <td>{{ u.public_choice }}</td>
+          <td>
+            <form method="post" action="{{ url_for('admin_delete', user_id=u.id) }}">
+              <button type="submit">Apagar</button>
+            </form>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Importar Plano 6º Ano{% endblock %}
+{% block body %}
+  <h2>Importar Plano de Estudos (6º Ano)</h2>
+  {% if error %}<p style="color:red">{{ error }}</p>{% endif %}
+  <p>Para exportar o seu plano de estudos:</p>
+  <ol>
+    <li>Entre no NetPa da NMS-FCM;</li>
+    <li>Área de Consulta → Situação Curricular;</li>
+    <li>Exportar “Plano de estudo” para Excel;</li>
+    <li>Importe aqui:</li>
+  </ol>
+  <form method="post" enctype="multipart/form-data">
+    <input type="file" name="file" accept=".xls,.xlsx" required><br><br>
+    <button type="submit">Enviar</button>
+  </form>
+  <button onclick="history.back(); return false;">Voltar</button>
+{% endblock %}

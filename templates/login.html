@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Entrar{% endblock %}
+{% block body %}
+  <h2>Login</h2>
+  {% with msgs = get_flashed_messages() %}
+    {% if msgs %}{% for m in msgs %}<p style="color:red">{{ m }}</p>{% endfor %}{% endif %}
+  {% endwith %}
+  <form method="post">
+    <label>Nº de aluno:<br>
+      <input name="student_number" type="text" required>
+    </label><br><br>
+    <label>Password:<br>
+      <input name="password" type="password" required>
+    </label><br><br>
+    <button type="submit">Entrar</button>
+  </form>
+  <p>Não tem conta? <a href="{{ url_for('register') }}">Registar</a></p>
+  <p><a href="{{ url_for('forgot') }}">Esqueci a minha password</a></p>
+{% endblock %}
