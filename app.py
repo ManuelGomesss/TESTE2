@@ -223,10 +223,30 @@ def results_6ano():
 @login_required
 def ranking():
     db = SessionLocal()
-    users = db.query(User).order_by(User.average.desc()).all()
-    course_mean = round(sum(u.average for u in users)/len(users),2) if users else None
+    # só traz quem já tem média calculada
+    users = (
+        db.query(User)
+          .filter(User.average.isnot(None))
+          .order_by(User.average.desc())
+          .all()
+    )
     db.close()
-    return render_template('ranking.html', users=users, course_mean=course_mean)
+
+    # calcula a média geral
+    if users:
+        course_mean = round(
+            sum(u.average for u in users) / len(users),
+            2
+        )
+    else:
+        course_mean = None
+
+    return render_template(
+        'ranking.html',
+        users=users,
+        course_mean=course_mean
+    )
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)
